@@ -14,7 +14,7 @@ git_dirty() {
   else
     if [[ $st == "nothing to commit (working directory clean)" ]]
     then
-      echo "%{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
+      echo "$(git_prompt_info)"
     else
       echo "%{$fg_bold[yellow]%}$(git_prompt_info)%{$reset_color%}"
     fi
@@ -79,7 +79,7 @@ todo(){
 }
 
 directory_name(){
-  echo "%n@%m %{$fg_bold[cyan]%}%c%{$reset_color%}"
+  echo "%n@%m %{$fg[cyan]%}%c%{$reset_color%}"
 }
 
 export PROMPT=$'[$(rvm_prompt)$(directory_name)$(git_prompt)]$ '
