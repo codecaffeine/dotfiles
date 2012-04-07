@@ -1,2 +1,2 @@
-# gcc on lion
-export CC=/usr/bin/gcc-4.2
+# gcc on lion - not sure the effect of this right now
+# export CC=/usr/bin/gcc-4.2
