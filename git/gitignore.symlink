@@ -1,6 +1,16 @@
-.DS_Store
 .svn
 .tissues
 *~
 *.swp
 *.rbc
+
+# Random Mac stuff
+.DS_Store
+Icon?
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
