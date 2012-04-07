@@ -1,5 +1,7 @@
 # my dotfiles
 
+These are my dotfiles. There are many like it, but these are mine.
+
 ## dotfiles
 
 Forked from [Zach Holman's dotfiles](http://github.com/holman/dotfiles). His [README](https://github.com/holman/dotfiles#readme) explains how to use this repo and his [blog post](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/) explains the philosophy of dotfiles.
