@@ -14,6 +14,9 @@ then
   source ~/.localrc
 fi
 
+# load rbenv
+eval "$(rbenv init -)"
+
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
