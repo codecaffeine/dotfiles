@@ -1,3 +1,5 @@
+alias git=hub
+
 # Use `hub` as our git wrapper:
 #   http://defunkt.github.com/hub/
 #
