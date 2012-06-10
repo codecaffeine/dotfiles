@@ -2,7 +2,10 @@ autoload colors && colors
 # cheers, @ehrenmurdick
 # http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
 
+# A lot of this comes from http://zsh.sourceforge.net/Doc/Release/User-Contributions.html
 autoload -Uz vcs_info
+zstyle ':vcs_info:*' disable bzr cdv cvs darcs mtn p4 svk tla
+# zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
 zstyle ':vcs_info:*' formats '%b%f'
 
@@ -78,7 +81,7 @@ set_prompt () {
 }
 
 precmd() {
-  title "zsh" "%m" "%55<...<%~"
+  # title "zsh" "%m" "%55<...<%~"
   vcs_info
   set_prompt
 }
