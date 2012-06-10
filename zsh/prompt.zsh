@@ -2,8 +2,12 @@ autoload colors && colors
 # cheers, @ehrenmurdick
 # http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
 
-git_branch() {
-  echo $(/usr/bin/git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+zstyle ':vcs_info:*' formats '%b%f'
+
+git_prompt_info () {
+ echo "${vcs_info_msg_0_}"
 }
 
 git_dirty() {
@@ -21,12 +25,6 @@ git_dirty() {
   fi
 }
 
-git_prompt_info () {
- ref=$(/usr/bin/git symbolic-ref HEAD 2>/dev/null) || return
-# echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
- echo "${ref#refs/heads/}"
-}
-
 unpushed () {
   /usr/bin/git cherry -v @{upstream} 2>/dev/null
 }
@@ -40,6 +38,7 @@ need_push () {
   fi
 }
 
+
 git_prompt(){
   st=$(/usr/bin/git status 2>/dev/null | tail -n 1)
   if [[ $st == "" ]]
@@ -48,15 +47,6 @@ git_prompt(){
   else
 		echo "($(git_dirty)$(need_push))"
 	fi
-}
-
-rvm_prompt(){
-  if $(which rvm &> /dev/null)
-  then
-	  echo "%{$fg_bold[yellow]%}$(rvm tools identifier)%{$reset_color%} "
-	else
-	  echo ""
-  fi
 }
 
 # This keeps the number of todos always available the right hand side of my
@@ -82,12 +72,13 @@ directory_name(){
   echo "%n@%m %{$fg[cyan]%}%c%{$reset_color%}"
 }
 
-export PROMPT=$'[$(rvm_prompt)$(directory_name)$(git_prompt)]$ '
+export PROMPT=$'[$(directory_name)$(git_prompt)]$ '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}$(todo)%{$reset_color%}"
 }
 
 precmd() {
   title "zsh" "%m" "%55<...<%~"
+  vcs_info
   set_prompt
 }
