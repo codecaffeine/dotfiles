@@ -1,2 +1,1 @@
-alias reload!='. ~/.zshrc'
-alias fuck='curl rage.thewaffleshop.net'
+alias reload='source ~/.zshrc'
